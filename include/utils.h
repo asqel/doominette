@@ -1,6 +1,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+# define elif else if
+
 extern char *doominette_dir;
 extern char *tests_dir;
 
@@ -14,5 +16,9 @@ void utils_exit();
 
 void path_init();
 void path_exit();
+
+void print_header(void);
+void	display_rs(int	result);
+void	prnt_ko(int res[42]);
 
 #endif
