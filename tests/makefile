@@ -7,7 +7,7 @@ all: build
 build: $(OUTS)
 
 %.so:
-	gcc -fPIC -shared -o $(basename $@)/tester.so $(wildcard $(basename $@)/src/*.c) -I../include
+	gcc -fPIC -shared -o $(basename $@)/tester.so $(wildcard $(basename $@)/*.c $(basename $@)/*/*.c) -I../include
 
 
 clean:
