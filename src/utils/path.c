@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 char *doominette_dir = NULL;
+char *tests_dir = NULL;
 
 char *get_path_dirname(char *path) {
 	int i = 0;
@@ -81,8 +82,20 @@ void path_init() {
 	char *tmp = get_exe_abspath();
 	doominette_dir = get_path_dirname(tmp);
 	free(tmp);
+	tests_dir = path_join((char **){doominette_dir, "tests"});
 }
 
 void path_exit() {
 	free(doominette_dir);
+}
+
+void path_get_basename(char *path) {
+    if (path == NULL || *path == '\0')
+        return ".";
+
+    const char *last_slash = strrchr(path, '/');
+    if (last_slash)
+        return last_slash + 1;
+
+    return path;
 }

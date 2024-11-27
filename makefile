@@ -3,13 +3,13 @@ SRC = main.c $(wildcard src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c src/*/*/*/*/
 OBJ = ${SRC:.c=.o}
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude
+CFLAGS = -Wall -Wextra -Iinclude -g
 LDFLAGS =
 
 
 NAME = doominette
 
-all: $(NAME)
+all: $(NAME) build_tests
 
 $(NAME): $(OBJ)
 	$(CC) $^ -o $(NAME) $(LDFLAGS)
@@ -30,4 +30,8 @@ releas: re
 	cp $(NAME) release/
 	cp tests release/
 
-.PHONY: all clean fclean
+build_tests:
+	make -C tests/
+
+
+.PHONY: all clean fclean build_tests
