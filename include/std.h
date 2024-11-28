@@ -68,4 +68,9 @@ typedef  u8 std_state_t[STD____MAX];
 void load_std_func_state(std_state_t func_states);
 void save_std_func_state(std_state_t func_states);
 
+
+void do_free(void *ptr);
+int do_printf(char *str, ...);
+void *do_malloc(size_t size);
+
 #endif
