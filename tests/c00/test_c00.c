@@ -43,5 +43,5 @@ void	tester(test_info_t info)
 	disable_all_std();
 	void (*ft_putchar)(char c) = dlsym(info.lib_handle, "ft_putchar");
 	tst_put_char(ft_putchar);
-	disable_all_std();
+	DISABLE_FUNC(STD_WRITE);
 }
