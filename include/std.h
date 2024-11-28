@@ -8,6 +8,7 @@ enum {
 	STD_MALLOC,
 	STD_FREE,
 	STD_WRITE,
+	STD_READ,
 
 	STD____MAX
 };
@@ -25,16 +26,25 @@ extern char *stdout;
 extern char *stderr;
 extern u32 stdout_len;
 extern u32 stderr_len;
+extern ssize_t (*fake_stdin)(void *buf, size_t count);
+
+extern u8 do_malloc_fail;
 
 #define IS_FUNC_ENABLED(X) (std_func_disabled[X] == 0)
 #define ENABLE_FUNC(X) (std_func_disabled[X] = 0)
 #define DISABLE_FUNC(X) (std_func_disabled[X] = 1)
 
-#define ENABLE_STDOUT_REDIRECT() do_redirect_stdout = 1
-#define DISABLE_STDOUT_REDIRECT() do_redirect_stdout = 0
+#define ENABLE_STDOUT_REDIRECT() (do_redirect_stdout = 1)
+#define DISABLE_STDOUT_REDIRECT() (do_redirect_stdout = 0)
 
-#define ENABLE_STDERR_REDIRECT() do_redirect_stderr = 1
-#define DISABLE_STDERR_REDIRECT() do_redirect_stderr = 0
+#define ENABLE_STDERR_REDIRECT() (do_redirect_stderr = 1)
+#define DISABLE_STDERR_REDIRECT() (do_redirect_stderr = 0)
+
+#define ENABLE_MALLOC_FAIL() (do_malloc_fail = 1)
+#define DISABLE_MALLOC_FAIL() (do_malloc_fail = 0)
+
+#define REDIRECT_STDIN(X) (fake_stdin = X)
+#define UNREDIRECT_STDIN() (fake_stdin = NULL)
 
 void disable_all_std();
 void enable_all_std();

@@ -17,6 +17,9 @@ char *stdout = NULL;
 char *stderr = NULL;
 u32 stdout_len = 0;
 u32 stderr_len = 0;
+ssize_t (*fake_stdin)(void *buf, size_t count) = NULL;
+
+u8 do_malloc_fail = 0;
 
 
 
@@ -58,6 +61,7 @@ ssize_t write_fake_stdout(void *buf, ssize_t count) {
 	stdout_len += count;
 	return count;
 }
+
 
 ssize_t write_fake_stderr(void *buf, ssize_t count) {
 	stderr = realloc(stderr, stderr_len + count);
