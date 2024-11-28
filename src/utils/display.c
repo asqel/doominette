@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "std.h"
+#include <stdarg.h>
 
 void print_header(void)
 {
