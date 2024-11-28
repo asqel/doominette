@@ -17,8 +17,9 @@ void utils_exit();
 void path_init();
 void path_exit();
 
-void print_header(void);
+void	print_header(void);
 void	display_rs(int	result);
 void	prnt_ko(int res[42]);
+int		randint(int a, int b);
 
 #endif
