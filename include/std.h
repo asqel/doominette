@@ -3,6 +3,9 @@
 
 #include "types.h"
 #include <setjmp.h>
+#include <stdint.h>
+#include <stddef.h>
+#include <unistd.h>
 
 enum {
 	STD_MALLOC,
@@ -21,8 +24,8 @@ extern u8 do_redirect_stdout;
 extern u8 do_redirect_stderr;
 
 
-extern char *stdout;
-extern char *stderr;
+extern char *c_stdout;
+extern char *c_stderr;
 extern u32 stdout_len;
 extern u32 stderr_len;
 
@@ -47,8 +50,8 @@ void catch_std_funcs(u32 func);
 
 
 
-size_t write_fake_stdout(void *buf, size_t count);
-size_t write_fake_stderr(void *buf, size_t count);
+ssize_t write_fake_stdout(void *buf, ssize_t count);
+ssize_t write_fake_stderr(void *buf, ssize_t count);
 
 typedef  u8 std_state_t[STD____MAX];
 

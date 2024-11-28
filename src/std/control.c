@@ -13,8 +13,8 @@ u32 last_disabled_called = STD____MAX;
 u8 do_redirect_stderr = 0;
 u8 do_redirect_stdout = 0;
 
-char *stdout = NULL;
-char *stderr = NULL;
+char *c_stdout = NULL;
+char *c_stderr = NULL;
 u32 stdout_len = 0;
 u32 stderr_len = 0;
 
@@ -53,15 +53,15 @@ const char *get_std_name(u32 func) {
 }
 
 ssize_t write_fake_stdout(void *buf, ssize_t count) {
-	stdout = realloc(stdout, stdout_len + count);
-	memcpy(&(stdout[stdout_len]), buf, count);
+	c_stdout = realloc(c_stdout, stdout_len + count);
+	memcpy(&(c_stdout[stdout_len]), buf, count);
 	stdout_len += count;
 	return count;
 }
 
 ssize_t write_fake_stderr(void *buf, ssize_t count) {
-	stderr = realloc(stderr, stderr_len + count);
-	memcpy(&(stdout[stderr_len]), buf, count);
+	c_stderr = realloc(c_stderr, stderr_len + count);
+	memcpy(&(c_stderr[stderr_len]), buf, count);
 	stderr_len += count;
 	return count;
 }
