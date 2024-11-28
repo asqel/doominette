@@ -7,11 +7,11 @@ all: build
 build: $(OUTS)
 
 %.so:
-	gcc -fPIC -shared -o $(basename $@)/tester.so $(wildcard $(basename $@)/*.c $(basename $@)/*/*.c) -I../include
+	cc -fPIC --shared -g -o $(basename $@)/tester.so $(wildcard $(basename $@)/*.c $(basename $@)/*/*.c) -I../include
 
 
 clean:
-	rm -rf $(DIRS)/tester.so
+	rm -rf ./*/*.so
 
 
 .PHONY: clean

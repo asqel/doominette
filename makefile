@@ -4,7 +4,7 @@ OBJ = ${SRC:.c=.o}
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Iinclude -g -D_GNU_SOURCE=1
-LDFLAGS =
+LDFLAGS = -rdynamic -ldl
 
 
 NAME = doominette
@@ -22,6 +22,7 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+	make -C tests/ clean
 
 re: fclean all
 

@@ -1,5 +1,11 @@
 {
 	"files.associations": {
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"errno.h": "c",
+		"std.h": "c",
+		"dlfcn.h": "c",
+		"utils.h": "c",
+		"stddef.h": "c",
+		"stdio.h": "c"
 	}
 }
