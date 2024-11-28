@@ -11,8 +11,8 @@ typedef struct {
 	void *lib_handle;
 	char **stdout;
 	char **stderr;
-	u32 *stdout_len;
-	u32 *stderr_len;
+	u32 stdout_len;
+	u32 stderr_len;
 } test_info_t;
 
 #endif
