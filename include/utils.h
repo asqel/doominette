@@ -5,6 +5,7 @@
 
 extern char *doominette_dir;
 extern char *tests_dir;
+extern char *logs_path;
 
 char *get_exe_abspath();
 char *get_path_dirname(char *path);

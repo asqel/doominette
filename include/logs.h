@@ -4,5 +4,6 @@
 extern char *logs;
 
 void write_log(char *log);
+void log_printf(char *str, ...);
 
 #endif

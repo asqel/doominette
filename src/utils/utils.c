@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include <std.h>
 #include <logs.h>
+#include <stdio.h>
 
 void utils_init() {
 	path_init();
 	srand(time(NULL));
 	atexit(&utils_exit);
+	logs_path = path_join((char **){doominette_dir, "logs", NULL});
 }
 
 void utils_exit() {
@@ -18,6 +20,8 @@ void utils_exit() {
 		free(c_stdout);
 	if (logs != NULL)
 		free(logs);
+	FILE *f = fopen("/dev/null", "w");
+
 }
 
 char **str_split(char *str, char delim) {

@@ -6,6 +6,8 @@
 
 char *doominette_dir = NULL;
 char *tests_dir = NULL;
+char *logs_path = NULL;
+extern int do_printf(char *str, ...);
 
 char *get_path_dirname(char *path) {
 	int i = 0;
@@ -41,6 +43,8 @@ char *path_join(char **paths) {
 	int i = 0;
 
 	while (paths[i] != NULL) {
+		do_printf("tttt%d\n", i);
+		do_printf("--%c--\n", paths[i][0]);
 		total_len += strlen(paths[i]);
 		i++;
 	}
@@ -82,7 +86,9 @@ void path_init() {
 	char *tmp = get_exe_abspath();
 	doominette_dir = get_path_dirname(tmp);
 	free(tmp);
-	tests_dir = path_join((char **){doominette_dir, "tests"});
+	do_printf("Doominette dir: %s\n", doominette_dir);
+
+	tests_dir = path_join((char **){doominette_dir, "tests", NULL});
 }
 
 void path_exit() {

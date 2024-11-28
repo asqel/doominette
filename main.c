@@ -10,7 +10,7 @@
 
 
 int main(int argc, char **argv) {
-	//utils_init();
+	utils_init();
 	//args_t args = parse_argc(argc, argv);
 	void *p = dlopen("./put_char.so", RTLD_LAZY | RTLD_GLOBAL);
 	void *tester = dlopen("./tests/c00/tester.so", RTLD_LAZY | RTLD_GLOBAL);
@@ -19,6 +19,6 @@ int main(int argc, char **argv) {
 
 	info.lib_handle = p;
 	tester_f(info);
-	
+
 	return 0;
 }
