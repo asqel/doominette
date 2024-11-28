@@ -11,7 +11,6 @@ void	tst_put_char(void (*ft_putchar)(char c))
 	int i = -1;
 	int res[42];
 
-	disable_all_std();
 	ENABLE_FUNC(STD_WRITE);
 
 	if (try_std_funcs() == 0) 
@@ -39,11 +38,10 @@ void	tst_put_char(void (*ft_putchar)(char c))
 
 void	tester(test_info_t info)
 {
-	char c;;
 	g_info = info;
 
 	disable_all_std();
 	void (*ft_putchar)(char c) = dlsym(info.lib_handle, "ft_putchar");
-	c = randint(' ', '~' + 1);
-	tst_put_char(c, ft_putchar);
+	tst_put_char(ft_putchar);
+	disable_all_std();
 }
