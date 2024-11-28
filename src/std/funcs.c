@@ -11,6 +11,8 @@ void *malloc(size_t size) {
 
 	if (real_malloc == NULL)
 		real_malloc = dlsym(RTLD_NEXT, "malloc");
+	if (do_malloc_fail)
+		return NULL;
 	return real_malloc(size);
 }
 
@@ -50,4 +52,16 @@ ssize_t write(int fd, const void *buf, size_t count) {
 		return count;
 	}
 	return real_write(fd, buf, count);
+}
+
+ssize_t read(int fd, void *buf, size_t count) {
+	if (!IS_FUNC_ENABLED(STD_READ))
+		catch_std_funcs(STD_READ);
+
+	static ssize_t (*real_read)(int fd, void *buf, size_t count) = NULL;
+	if (real_read == NULL)
+		real_read = dlsym(RTLD_NEXT, "read");
+	if (fd == 0 && fake_stdin != NULL)
+		return fake_stdin(buf, count);
+	return real_read(fd, buf, count);
 }
