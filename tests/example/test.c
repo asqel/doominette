@@ -1,5 +1,6 @@
 #include "tests.h"
 #include "std.h"
+#include "utils.h"
 
 void tester(test_info_t info) {
 
@@ -12,6 +13,6 @@ void tester(test_info_t info) {
 	}
 	else {
 		enable_all_std();
-		printf("forbidden function called %d\n", last_disabled_called);
+		do_printf("forbidden function called %d\n", last_disabled_called);
 	}
 }

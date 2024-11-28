@@ -2,11 +2,11 @@
 #include "utils.h"
 #include<string.h>
 
-args_t	parse_argc(int argc, char **argv)
+args_t	parse_args(int argc, char **argv)
 {
 	args_t	res = {0};
 	int		i = 0;
-	
+
 	while (++i < argc)
 	{
 		if (!strcmp(argv[i], "-g"))
@@ -24,5 +24,5 @@ args_t	parse_argc(int argc, char **argv)
 		elif (!strcmp(argv[i], "-r"))
 			res.nod = 1;
 	}
-	
+
 }

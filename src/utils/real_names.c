@@ -14,7 +14,7 @@ char *get_real_name(char *name) {
 	struct dirent *entry;
 	while ((entry = readdir(dir)) != NULL) {
 		if (entry->d_type == DT_DIR) {
-			printf("dir: %s\n", entry->d_name);
+			do_printf("dir: %s\n", entry->d_name);
 		}
 	}
 	return NULL;
