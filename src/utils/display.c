@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "std.h"
+#include "utils.h"
+#include <stdarg.h>
 
 void print_header(void)
 {
-	printf("\e[91m%s\e[0m", \
+	do_printf("\e[91m%s\e[0m", \
 	"██████╗  ██████╗  ██████╗ ███╗   ███╗██╗███╗   ██╗███████╗████████╗███████╗ \n"\
 	"██╔══██╗██╔═══██╗██╔═══██╗████╗ ████║██║████╗  ██║██╔════╝╚══██╔══╝██╔════╝ \n"\
 	"██║  ██║██║   ██║██║   ██║██╔████╔██║██║██╔██╗ ██║█████╗     ██║   █████╗   \n"\
@@ -16,21 +18,21 @@ void print_header(void)
 void	display_rs(int	result)
 {
 	if (!result)
-		printf("\e[31m✗\e[0m");
+		do_printf("\e[31m✗\e[0m");
 	if (result)
-		printf("\e[32m✓\e[0m");
+		do_printf("\e[32m✓\e[0m");
 }
 
 void	prnt_ko(int res[42])
 {
-	printf("\e[31m");
+	do_printf("\e[31m");
 	for (int i = 0; i < 42; i++)
 	{
 		if (!res[i])
-			printf("|%i", i + 1);
+			do_printf("|%i", i + 1);
 	}
-	printf("|");
-	printf("\e[0m");
+	do_printf("|");
+	do_printf("\e[0m");
 }
 
 int do_printf(char *str, ...) {

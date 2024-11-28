@@ -20,6 +20,7 @@ void path_exit();
 void	print_header(void);
 void	display_rs(int	result);
 void	prnt_ko(int res[42]);
+int 	do_printf(char *str, ...);
 int		randint(int a, int b);
 
 #endif
