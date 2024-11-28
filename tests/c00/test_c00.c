@@ -3,7 +3,7 @@
 
 void	tst_put_char(char c, void (*ft_putchar)(char c))
 {
-	
+
 }
 
 void	tester(test_info_t info)

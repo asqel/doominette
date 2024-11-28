@@ -3,7 +3,7 @@ SRC = main.c $(wildcard src/*.c src/*/*.c src/*/*/*.c src/*/*/*/*.c src/*/*/*/*/
 OBJ = ${SRC:.c=.o}
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Iinclude -g
+CFLAGS = -Wall -Wextra -Iinclude -g -D_GNU_SOURCE=1
 LDFLAGS =
 
 
