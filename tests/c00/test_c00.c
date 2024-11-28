@@ -13,7 +13,7 @@ void	tst_put_char(void (*ft_putchar)(char c))
 
 	ENABLE_FUNC(STD_WRITE);
 
-	if (try_std_funcs() == 0) 
+	if (try_std_funcs() == 0)
 	{
 		while (++i < 42)
 		{
