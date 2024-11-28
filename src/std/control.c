@@ -21,8 +21,6 @@ ssize_t (*fake_stdin)(void *buf, size_t count) = NULL;
 
 u8 do_malloc_fail = 0;
 
-
-
 void catch_std_funcs(u32 func) {
 	last_disabled_called = func;
 	longjmp(std_func_disable_jmp, 1);
@@ -79,3 +77,4 @@ void load_std_func_state(u8 func_states[STD____MAX]) {
 	for (u32 i = 0; i < STD____MAX; i++)
 		std_func_disabled[i] = func_states[i];
 }
+

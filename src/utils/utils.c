@@ -1,13 +1,23 @@
 #include "utils.h"
+#include <time.h>
 #include <stdlib.h>
+#include <std.h>
+#include <logs.h>
 
 void utils_init() {
 	path_init();
+	srand(time(NULL));
 	atexit(&utils_exit);
 }
 
 void utils_exit() {
 	path_exit();
+	if (c_stderr != NULL)
+		free(c_stderr);
+	if (c_stdout != NULL)
+		free(c_stdout);
+	if (logs != NULL)
+		free(logs);
 }
 
 char **str_split(char *str, char delim) {
